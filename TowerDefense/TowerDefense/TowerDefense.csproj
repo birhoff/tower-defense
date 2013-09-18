@@ -64,6 +64,8 @@
     <Compile Include="Engine\Levels\Waypoint.cs" />
     <Compile Include="Engine\Scenes\TDGameScene.cs" />
     <Compile Include="Engine\Settings.cs" />
+    <Compile Include="Engine\UI\Button.cs" />
+    <Compile Include="Engine\UI\Control.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

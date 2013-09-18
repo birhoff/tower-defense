@@ -88,12 +88,12 @@ namespace TowerDefense.TDGame.Scenes
 
         public override void Draw(Graphics graphics)
         {
-            graphics.Clear(Color.Red);
+            graphics.Clear(Color.DarkGray);
 
             /* Draw background map */
-            graphics.DrawImage(_currentLevel.Map, 0, 0, _device.ClientSize.Width, _device.ClientSize.Height);
+            graphics.DrawImage(_currentLevel.Map, 0, 0, Settings.MapSize.Width, Settings.MapSize.Height);
 
-            var background = new Rectangle(0, 0, _device.ClientSize.Width, _device.ClientSize.Height);
+            var background = new Rectangle(0, 0, Settings.MapSize.Width, Settings.MapSize.Height);
             var penDraw = new Pen(Color.Black, 1);
             graphics.DrawRectangle(penDraw, background);
 
