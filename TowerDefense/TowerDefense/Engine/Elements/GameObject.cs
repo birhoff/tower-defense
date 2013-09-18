@@ -1,5 +1,4 @@
 ﻿using System.Drawing;
-using TowerDefense.Engine.Scenes;
 using TowerDefense.TDGame.Scenes;
 
 namespace TowerDefense.Engine.Elements

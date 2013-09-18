@@ -9,5 +9,6 @@ namespace TowerDefense.Engine.levels
         public Point StartPosition;
         public Waypoint StartWaypoint;
         public List<Wave> Waves;
+        public List<Point> TowerPositions;
     }
 }

@@ -1,11 +1,12 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Linq;
 using TowerDefense.Engine.Enums;
 using TowerDefense.Engine.Physics;
 
 namespace TowerDefense.Engine.Elements
 {
-    public class Tower : GameObject
+    public class Tower : GameObject, ICloneable
     {
         private Point _towerCenter;
         private Point _towerPosition;
@@ -16,7 +17,7 @@ namespace TowerDefense.Engine.Elements
         
         public Tower(int radius, int damage, float fireRate, Color color)
         {
-            Size = new Size(28, 28);
+            Size = Settings.TowerSize;
 
             AttackRadius = radius;
             Damage = damage;
@@ -75,6 +76,7 @@ namespace TowerDefense.Engine.Elements
             if (attackingEnemy == null)
                 return;
 
+            TargetEnemy = attackingEnemy;
             Status = TowerStatus.Attack;
             _reloadTime = (int) (Settings.TicksPerSecond/FireRate);
             _atackLengthTime = (int) (_reloadTime/10);
@@ -129,6 +131,19 @@ namespace TowerDefense.Engine.Elements
             if (enemy.Status == EnemyStatus.Dead) return false;
             var enemyCenter = new Point(enemy.Position.X + enemy.Size.Width/2, enemy.Position.Y + enemy.Size.Height/2);
             return Collisions.CheckCircleCollisions(_towerCenter, AttackRadius, enemyCenter, enemy.Size.Width/2);
+        }
+
+        public object Clone()
+        {
+            var newTower = new Tower(AttackRadius, Damage, FireRate, Color)
+                {
+                    Position = this.Position,
+                    Scene = this.Scene,
+                    Status = this.Status,
+                    Size = this.Size,
+                    TargetEnemy = this.TargetEnemy
+                };
+            return newTower;
         }
     }
 }

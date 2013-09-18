@@ -40,6 +40,14 @@ namespace TowerDefense.TDGame.Levels
                                 }
                         }
                 };
+
+            TowerPositions = new List<Point>
+                {
+                    new Point(122,31), new Point(326,31), new Point(535,31), new Point(745,31),
+                    new Point(29,170), new Point(233,170), new Point(442,170), new Point(652,170),
+                    new Point(118,347), new Point(322,347), new Point(531,347), new Point(741,347),
+                    new Point(27,529), new Point(231,529), new Point(440,529), new Point(650,529)
+                };
         }
     }
 }

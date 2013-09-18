@@ -51,6 +51,7 @@
     <Compile Include="Engine\Elements\GameEntity.cs" />
     <Compile Include="Engine\Elements\GameObject.cs" />
     <Compile Include="Engine\Elements\Tower.cs" />
+    <Compile Include="Engine\Elements\TowerBuilder.cs" />
     <Compile Include="Engine\Enums\EnemyStatus.cs" />
     <Compile Include="Engine\Enums\TowerStatus.cs" />
     <Compile Include="Engine\Game.cs" />

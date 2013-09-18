@@ -11,5 +11,12 @@ namespace TowerDefense.Engine.Physics
             var deltaY = circle1Center.Y - circle2Center.Y;
             return deltaX * deltaX + deltaY * deltaY <= radius * radius;
         }
+
+        public static bool CheckPointInRectangle(Point point, Rectangle rectangle)
+        {
+            if (point.X < rectangle.X || point.X > rectangle.X + rectangle.Width) return false;
+            if (point.Y < rectangle.Y || point.Y > rectangle.Y + rectangle.Height) return false;
+            return true;
+        }
     }
 }

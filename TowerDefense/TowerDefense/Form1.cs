@@ -28,17 +28,17 @@ namespace TowerDefense
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            
+            _mainGameLoop.Game.Device.Input.Mouse.IsMouseDown = true;
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-
+            _mainGameLoop.Game.Device.Input.Mouse.IsMouseDown = false;
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-
+            _mainGameLoop.Game.Device.Input.Mouse.Position = e.Location;
         }
     }
 }

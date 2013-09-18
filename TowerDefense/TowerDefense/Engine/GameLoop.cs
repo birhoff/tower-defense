@@ -29,25 +29,9 @@ namespace TowerDefense.Engine
             _game.Initialize(_device);
         }
 
-        void _loopThread_DoWork(object sender, DoWorkEventArgs e)
+        public Game Game
         {
-            _game.Start();
-            long nextGameTick = getTickCount();
-            const bool gameIsRunning = true;
-
-            while (gameIsRunning)
-            {
-                int loops = 0;
-                while (getTickCount() > nextGameTick && loops < MaxFrameSkip)
-                {
-                    Update();
-
-                    nextGameTick += SkipTicks;
-                    loops++;
-                }
-
-                Draw();
-            }
+            get { return _game; }
         }
 
         public void Start()
@@ -73,6 +57,27 @@ namespace TowerDefense.Engine
         private void Draw()
         {
             _pictureBox.Invoke(new MethodInvoker(() => _pictureBox.Refresh()));
+        }
+
+        void _loopThread_DoWork(object sender, DoWorkEventArgs e)
+        {
+            _game.Start();
+            long nextGameTick = getTickCount();
+            const bool gameIsRunning = true;
+
+            while (gameIsRunning)
+            {
+                int loops = 0;
+                while (getTickCount() > nextGameTick && loops < MaxFrameSkip)
+                {
+                    Update();
+
+                    nextGameTick += SkipTicks;
+                    loops++;
+                }
+
+                Draw();
+            }
         }
 
 

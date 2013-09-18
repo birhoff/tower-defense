@@ -4,6 +4,7 @@ using System.Linq;
 using TowerDefense.Engine;
 using TowerDefense.Engine.Elements;
 using TowerDefense.Engine.Enums;
+using TowerDefense.Engine.Physics;
 using TowerDefense.Engine.levels;
 using TowerDefense.TDGame.Levels;
 
@@ -31,9 +32,6 @@ namespace TowerDefense.TDGame.Scenes
             _towers = new List<Tower>();
 
             _nextPackTimeLeft = 0;
-
-            var tower = new Tower(125, 3, 1.5f, Color.Salmon) { Position = new Point(122, 31), Scene = this };
-            _towers.Add(tower);
         }
 
         public override void Start()
@@ -60,6 +58,20 @@ namespace TowerDefense.TDGame.Scenes
                 else
                 {
                     
+                }
+            }
+
+            /* check inputs */
+            if (_device.Input.Mouse.IsMouseDown)
+            {
+                foreach (var towerPosition in _currentLevel.TowerPositions)
+                {
+                    if (!Collisions.CheckPointInRectangle(_device.Input.Mouse.Position,
+                                                          new Rectangle(towerPosition, Settings.TowerSize))) continue;
+
+                    var freeSpot = _towers.All(tower => tower.Position != towerPosition);
+                    if(!freeSpot) break;
+                    _towers.Add(TowerBuilder.CreateTower("standart1", towerPosition, this));
                 }
             }
 
